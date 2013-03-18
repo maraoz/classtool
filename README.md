@@ -10,32 +10,32 @@ from traditional class based inheritance in the following ways:
 
 The following is an example class definition:
 
-> function ClassSpec() {
->   var fs; // example of a binding
->
->   this.bindings = function(b) {
->     fs = b.fs || require('fs');
->   };
->
->   function Class() {
->     // Body of constructor function
->   };
->   this.class = Class;
->
->   Class.prototype.methodA = function() {
->     // Body of method A
->   };
->
->   Class.prototype.methodB = function() {
->     // Body of method B
->   };
-> };
-> module.defineClass(ClassSpec); 
+    function ClassSpec() {
+      var fs; // example of a binding
+   
+      this.bindings = function(b) {
+        fs = b.fs || require('fs');
+      };
+   
+      function Class() {
+        // Body of constructor function
+      };
+      this.class = Class;
+   
+      Class.prototype.methodA = function() {
+        // Body of method A
+      };
+   
+      Class.prototype.methodB = function() {
+        // Body of method B
+      };
+    };
+    module.defineClass(ClassSpec); 
 
 There are two ways to instantiate the class in client code:
 
-> var MyClass = require('./path/to/classfile').class();
-> var MyClass = require('./path/to/classfile').loadClass({fs: mockFileSystem});
+    var MyClass = require('./path/to/classfile').class();
+    var MyClass = require('./path/to/classfile').loadClass({fs: mockFileSystem});
 
 In the first example, each call will return the same class instance.  In the second
 example, each call returns a new class instance.  The second call also shows how you
@@ -46,25 +46,22 @@ that reason, it's probably best to only override bindings using the loadClass() 
 
 To create instances of your class, do the following:
 
-> new MyClass();
+    new MyClass();
 
 You can of course pass arguments to this constructor.
 
 To create an inheritance chain, use the method inherit() as follows:
 
-> MyClass.inherit(MyOtherClass);
+    MyClass.inherit(MyOtherClass);
 
 To invoke a method from a superclass use supercall as follows:
 
-> function Class() {
->   supercall(this, Class, arguments);
-> };
+    function Class() {
+      supercall(this, Class, arguments);
+    };
 
 In a normal method (non constructor) do:
 
-> Class.prototype.methodA = function() {
->   supercall(this, Class, 'methodA', arguments);
-> };
-
-
-
+    Class.prototype.methodA = function() {
+      supercall(this, Class, 'methodA', arguments);
+    };
