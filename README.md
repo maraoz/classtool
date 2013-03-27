@@ -31,6 +31,10 @@ The following is an example class definition:
     };
     module.defineClass(ClassSpec); 
 
+To use classtool, simply require it at the beginning of your program:
+
+    require('classtool');
+
 There are two ways to instantiate the class in client code:
 
     var MyClass = require('./path/to/classfile').class();
