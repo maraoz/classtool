@@ -60,6 +60,11 @@ If the name is omitted, "default" is used.  The following expressions are equiva
     var MyClass = require('./classfile').class();
     var MyClass = require('./classfile').class('default');
 
+To create an inheritance chain, use the method inherit() as follows:
+
+    MyClass.inherit(MySuperClass);
+    MyClass.inherit(MySuper, MySuperSuper, MySuperDeDuper);
+
 To create instances of your class, do the following:
 
     new MyClass();
@@ -76,11 +81,6 @@ This form is equivalent to:
 You may also instantiate instances of a specific class as follows:
 
     var myTestInstance = require('./myClass').new('test');
-
-To create an inheritance chain, use the method inherit() as follows:
-
-    MyClass.inherit(MySuperClass);
-    MyClass.inherit(MySuper, MySuperSuper, MySuperDeDuper);
 
 It's also possible to explicitly invoke methods of a superclass.  Invoke the superclass 
 constructor as follows:
