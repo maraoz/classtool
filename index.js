@@ -40,6 +40,9 @@ module.__proto__.defineClass = function(classConstructor) {
     wrapper._super = cls._super;
     wrapper.inherit = cls.inherit;
     wrapper.super = cls.super;
+    for(x in cls) {
+      wrapper[x] = cls[x];
+    }
     return wrapper;
   };
 
@@ -47,7 +50,7 @@ module.__proto__.defineClass = function(classConstructor) {
   // bindings and an optional name...the name, if given, can be used to
   // later recall the same class instance using class())
   this.exports.createClass = function(name, bindings) {
-    if(typeof name != 'string') return _createClass(bindings);
+    if(typeof name != 'string') return _createClass(name);
     classes[name] = function() {return tmp.apply(this, arguments);};
     var tmp = _createClass(bindings);
     return _wrapClass(classes[name], tmp);
