@@ -7,6 +7,7 @@
 module.__proto__.defineClass = function(classConstructor) {
   var self = this;
   var classes = {};
+  var defaultInstance;
   
   // Private class constructor
   function _createClass(bindings) {
@@ -20,6 +21,15 @@ module.__proto__.defineClass = function(classConstructor) {
       Object.defineProperty(this.prototype, '_constructor', {enumerable: false, value: this});
       this.prototype.__proto__ = parent.prototype;
       this.__proto__ = parent;
+
+      // Make parent's methods available in the child
+      if(answer.copyMethods) {
+        for(var m in parent.prototype) {
+          if(!this.prototype[m]) {
+            this.prototype[m] = parent.prototype[m];
+          }
+        }        
+      }
     };
     answer.super = function(receiver, method, args) {
       if(!this._super) return;
@@ -67,7 +77,14 @@ module.__proto__.defineClass = function(classConstructor) {
     return this.createClass(name);
   };
 
-  // Public new() method - This is a conventience function to create a 
+  // Public default() method - This is a convenience function to 
+  // create and retain a default instance
+  this.exports.default = function() {
+    if(!defaultInstance) defaultInstance = this.new();
+    return defaultInstance;
+  };
+
+  // Public new() method - This is a convenience function to create a 
   // new instance of the "default" class instance
   this.exports.new = function() {
     var ClassInstance = this.class();
