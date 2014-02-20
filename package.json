@@ -1,16 +1,25 @@
 {
-  "name" : "classtool",
-  "description" : "Class like behavior composition, but better",
+  "name" : "factory",
+  "description" : "Class like behavior composition, and class factories for dependency adjustment",
   "version" : "1.0.1",
   "author" : "Stephen Pair <stephen@bitpay.com>",
+  "contributors": [ 
+    {
+      "name": "Manuel Araoz",
+      "email": "manuelaraoz@gmail.com"
+    } 
+  ],
   "main" : "./index",
   "keywords" : [
     "class",
+    "object",
+    "factory",
+    "define",
     "behavior"
   ],
   "repository" : {
     "type" : "git",
-    "url" : "http://github.com/gasteve/classtool.git"
+    "url" : "http://github.com/maraoz/factory.git"
   },
   "scripts" : {},
   "devDependencies" : {},
