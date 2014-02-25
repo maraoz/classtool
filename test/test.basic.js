@@ -7,6 +7,7 @@ var testInstanceWorks = function(instance){
   should.exist(instance);
   instance.foo.should.not.throw (Error);
   instance.foo().should.equal('bar');
+  instance.double5().should.equal(10);
 };
 
 var testClassWorks = function(Class) {
@@ -43,6 +44,15 @@ describe('Factory Module', function() {
       var DummyFactory = require('./dummy').factory;
       var TestDummy = DummyFactory.createClass('Test Dummy Class');
       testClassWorks(TestDummy);
+    });
+    it('factory#createClass with custom dependencies', function() {
+      var DummyFactory = require('./dummy').factory;
+      var TestDummyWithCustomDep = DummyFactory.createClass({
+        dependency: {
+          double: function(x) {return x+x;}
+        }
+      });
+      testClassWorks(TestDummyWithCustomDep);
     });
     it('factory#class', function() {
       var DummyFactory = require('./dummy').factory;
