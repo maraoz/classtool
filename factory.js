@@ -4,7 +4,7 @@
 // to the outside world.  This approach allows a class to be instantiated 
 // multiple times, which enables a more compositional approach to inheritance. 
 
-module.__proto__.defineClass = function(classConstructor) {
+var defineClass = function(classConstructor) {
   var self = this;
   var classes = {};
   var defaultInstance;
@@ -92,4 +92,8 @@ module.__proto__.defineClass = function(classConstructor) {
     ClassInstance.apply(answer, arguments);
     return answer;
   };
+};
+
+module.exports.extend = function() {
+  module.__proto__.defineClass = defineClass;
 };

@@ -1,27 +1,30 @@
 {
-  "name" : "factory",
-  "description" : "Class like behavior composition, and class factories for dependency adjustment",
-  "version" : "1.0.1",
-  "author" : "Stephen Pair <stephen@bitpay.com>",
-  "contributors": [ 
+  "name": "factory",
+  "description": "Class like behavior composition, and class factories for dependency adjustment",
+  "version": "1.0.1",
+  "author": "Stephen Pair <stephen@bitpay.com>",
+  "contributors": [
     {
       "name": "Manuel Araoz",
       "email": "manuelaraoz@gmail.com"
-    } 
+    }
   ],
-  "main" : "./index",
-  "keywords" : [
+  "main": "./factory",
+  "keywords": [
     "class",
     "object",
     "factory",
     "define",
     "behavior"
   ],
-  "repository" : {
-    "type" : "git",
-    "url" : "http://github.com/maraoz/factory.git"
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/maraoz/factory.git"
   },
-  "scripts" : {},
-  "devDependencies" : {},
-  "license" : "MIT"
+  "scripts": {},
+  "devDependencies": {
+    "mocha": "~1.17.1",
+    "chai": "~1.9.0"
+  },
+  "license": "MIT"
 }
