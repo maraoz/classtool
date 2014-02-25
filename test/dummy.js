@@ -1,4 +1,4 @@
-require('../factory').extend();
+require('../factory');
 
 function spec(b) {
   function Dummy() {
