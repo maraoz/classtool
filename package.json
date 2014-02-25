@@ -1,6 +1,6 @@
 {
   "name": "factory",
-  "description": "Class like behavior composition, and class factories for dependency adjustment",
+  "description": "Class like behavior composition, and class factories for dependency management",
   "version": "1.0.1",
   "author": "Stephen Pair <stephen@bitpay.com>",
   "contributors": [
